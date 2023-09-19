@@ -55,6 +55,40 @@ document.getElementById('iw7073').onclick = (event) => {
   { window.document.location = ''; }
 }; 
 
+document.getElementById('iz6293').onclick = (event) => {
+  let supplierId = window.location.pathname.replace('/OrderSummary/','');
+  let customerId = JSON.parse(localStorage.getItem('user'))._id;
+  let jsonData = JSON.parse(localStorage.getItem('order')).products;
+  console.log(orderSum);
+  const transformedData = Object.keys(jsonData).map((key) => {
+      const product = jsonData[key];
+      return {
+        orderproduct: key, // Use the key as the orderproduct value
+        orderproductquantity: product.quantity
+      };
+    });
+    
+    const result = { orderproducts: transformedData };
+  event.preventDefault();
+  order["ordersupplier"] = supplierId;
+  order["ordercustomer"] = customerId;
+  order["orderprice"] = orderSum;
+  order["orderstatus"] = "Αναμονή";
+  order["orderproducts"] = result.orderproducts;
+
+  apiOrderApi.createorder(order, (error,data,response) => {
+      if(error){
+          console.log(error);
+      }
+      else {
+          console.log('ok');
+      }
+  })
+  {
+    window.document.location = '/MyOrders';
+  }
+};
+
 window.onload = () => {
   let userId = window.location.pathname.replace('/OrderSummary/','');
   apiUserApi.getuser( userId, (error, data, response) => {
