@@ -16,7 +16,9 @@ let apiUserApi = new TempApi.UserApi();import TempApi from '../src/index';docume
     event.preventDefault();
     {   location.href= '/editProfile' ;}};document.getElementById('ie9bo').onclick = (event) => {
     event.preventDefault();
-    {   location.href= '/CustomerHome' ;}};document.getElementById('i7tmww').onclick = (event) => {
+    {   location.href= '/CustomerHome' ;}};document.getElementById('ixwluj').onclick = (event) => {
+    event.preventDefault();
+    {   location.href= '/MyProducts' ;}};document.getElementById('i7tmww').onclick = (event) => {
     event.preventDefault();
     {  
       let transitionId = window.location.href.split('/').at(-1);
