@@ -83,54 +83,198 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
           QUALITY
         );
       };});
-document.getElementById('ivf40k').onclick = (event) => {
-    event.preventDefault();
-    let userId = window.location.pathname.replace('/editProfile/','');let user = new TempApi.User();user['username'] = document.querySelector("[annotationname = 'username']").value;user['useremail'] = document.querySelector("[annotationname = 'useremail']").value;user['userstatus'] = document.querySelector("[annotationname = 'userstatus']").value;user['userimage'] = {
-        data: document.querySelector("[annotationname = 'userimage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'userimage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'userimage']").src,
-        name: document.querySelector("[annotationname = 'userimage']").getAttribute("name")
-      };user['mondayclose'] = document.querySelector("[annotationname = 'mondayclose']").value;user['mondayopen'] = document.querySelector("[annotationname = 'mondayopen']").value;user['tuesdayopen'] = document.querySelector("[annotationname = 'tuesdayopen']").value;user['tuesdayclose'] = document.querySelector("[annotationname = 'tuesdayclose']").value;user['wednesdayopen'] = document.querySelector("[annotationname = 'wednesdayopen']").value;user['wednesdayclose'] = document.querySelector("[annotationname = 'wednesdayclose']").value;user['thursdayclose'] = document.querySelector("[annotationname = 'thursdayclose']").value;user['thursdayopen'] = document.querySelector("[annotationname = 'thursdayopen']").value;user['fridayopen'] = document.querySelector("[annotationname = 'fridayopen']").value;user['fridayclose'] = document.querySelector("[annotationname = 'fridayclose']").value;user['usertown'] = document.querySelector("[annotationname = 'usertown']").value;user['userregion'] = document.querySelector("[annotationname = 'userregion']").value;user['useraddress'] = document.querySelector("[annotationname = 'useraddress']").value;user['userpc'] = document.querySelector("[annotationname = 'userpc']").value;user['usercategory'] = document.querySelector("[annotationname = 'usercategory']").value; let opts = {user};apiUserApi.updateuser( userId, opts, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); document.querySelector('[annotationname = username]').value = response.body.query.username ;document.querySelector('[annotationname = useremail]').value = response.body.query.useremail ;document.querySelector('[annotationname = userstatus]').value = response.body.query.userstatus ;
-      if(response.body.query.userimage !== undefined){
-
-        if(document.querySelector('[annotationname = userimage]').getAttribute('type') === 'file'){
-          document.querySelector('[annotationname = userimage]').setAttribute('data-image-base64',response.body.query.userimage.data);
+      document.getElementById('ivf40k').onclick = (event) => {
+        event.preventDefault();
+        let oldUser = JSON.parse(localStorage.getItem('user'));
+        let userId = oldUser._id;
+        let user = new TempApi.User();
+        user['username'] = document.querySelector("[annotationname = 'username']").value;
+        user['useremail'] = document.querySelector("[annotationname = 'useremail']").value;
+        user['userstatus'] = document.querySelector("[annotationname = 'userstatus']").value;
+        user['userimage'] = {
+          data: document.querySelector("[annotationname = 'userimage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'userimage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'userimage']").src,
+          name: document.querySelector("[annotationname = 'userimage']").getAttribute("name")
+        };
+        user['mondayclose'] = document.querySelector("[annotationname = 'mondayclose']").value;
+        user['mondayopen'] = document.querySelector("[annotationname = 'mondayopen']").value;
+        user['tuesdayopen'] = document.querySelector("[annotationname = 'tuesdayopen']").value;
+        user['tuesdayclose'] = document.querySelector("[annotationname = 'tuesdayclose']").value;
+        user['wednesdayopen'] = document.querySelector("[annotationname = 'wednesdayopen']").value;
+        user['wednesdayclose'] = document.querySelector("[annotationname = 'wednesdayclose']").value;
+        user['thursdayclose'] = document.querySelector("[annotationname = 'thursdayclose']").value;
+        user['thursdayopen'] = document.querySelector("[annotationname = 'thursdayopen']").value;
+        user['fridayopen'] = document.querySelector("[annotationname = 'fridayopen']").value;
+        user['fridayclose'] = document.querySelector("[annotationname = 'fridayclose']").value;
+        user['usertown'] = document.querySelector("[annotationname = 'usertown']").value;
+        user['userregion'] = document.querySelector("[annotationname = 'userregion']").value;
+        user['useraddress'] = document.querySelector("[annotationname = 'useraddress']").value;
+        user['userpc'] = document.querySelector("[annotationname = 'userpc']").value;
+        user['usercategory'] = document.querySelector("[annotationname = 'usercategory']").value;
+        let opts = {
+          user};
+        apiUserApi.updateuser( userId, opts, (error, data, response) => {
+          if (error) {
+            console.error(error);
+          }
+          else {
+      
+            console.log('API called successfully. Returned data: ' + data);
+            console.log(response.body.query);
+            localStorage.setItem('user', JSON.stringify(response.body.query));
+            document.querySelector('[annotationname = username]').value = response.body.query.username ;
+            document.querySelector('[annotationname = useremail]').value = response.body.query.useremail ;
+            document.querySelector('[annotationname = userstatus]').value = response.body.query.userstatus ;
+            if(response.body.query.userimage !== undefined){
+              if(document.querySelector('[annotationname = userimage]').getAttribute('type') === 'file'){
+                document.querySelector('[annotationname = userimage]').setAttribute('data-image-base64',response.body.query.userimage.data);
+              }
+              else{
+                document.querySelector('[annotationname = userimage]').src = response.body.query.userimage.data;
+              }
+              document.querySelector('[annotationname = userimage]').name = response.body.query.userimage.name;
+            }
+            document.querySelector('[annotationname = mondayclose]').value = response.body.query.mondayclose ;
+            document.querySelector('[annotationname = mondayopen]').value = response.body.query.mondayopen ;
+            document.querySelector('[annotationname = tuesdayopen]').value = response.body.query.tuesdayopen ;
+            document.querySelector('[annotationname = tuesdayclose]').value = response.body.query.tuesdayclose ;
+            document.querySelector('[annotationname = wednesdayopen]').value = response.body.query.wednesdayopen ;
+            document.querySelector('[annotationname = wednesdayclose]').value = response.body.query.wednesdayclose ;
+            document.querySelector('[annotationname = thursdayclose]').value = response.body.query.thursdayclose ;
+            document.querySelector('[annotationname = thursdayopen]').value = response.body.query.thursdayopen ;
+            document.querySelector('[annotationname = fridayopen]').value = response.body.query.fridayopen ;
+            document.querySelector('[annotationname = fridayclose]').value = response.body.query.fridayclose ;
+            document.querySelector('[annotationname = usertown]').value = response.body.query.usertown ;
+            document.querySelector('[annotationname = userregion]').value = response.body.query.userregion ;
+            document.querySelector('[annotationname = useraddress]').value = response.body.query.useraddress ;
+            document.querySelector('[annotationname = userpc]').value = response.body.query.userpc ;
+            document.querySelector('[annotationname = usercategory]').value = response.body.query.usercategory ;
+            {
+              location.href= '/Profile' ;
+            }
+          }
         }
-        else{
-          document.querySelector('[annotationname = userimage]').src = response.body.query.userimage.data;
-        }
-        document.querySelector('[annotationname = userimage]').name = response.body.query.userimage.name;
-      }
-      document.querySelector('[annotationname = mondayclose]').value = response.body.query.mondayclose ;document.querySelector('[annotationname = mondayopen]').value = response.body.query.mondayopen ;document.querySelector('[annotationname = tuesdayopen]').value = response.body.query.tuesdayopen ;document.querySelector('[annotationname = tuesdayclose]').value = response.body.query.tuesdayclose ;document.querySelector('[annotationname = wednesdayopen]').value = response.body.query.wednesdayopen ;document.querySelector('[annotationname = wednesdayclose]').value = response.body.query.wednesdayclose ;document.querySelector('[annotationname = thursdayclose]').value = response.body.query.thursdayclose ;document.querySelector('[annotationname = thursdayopen]').value = response.body.query.thursdayopen ;document.querySelector('[annotationname = fridayopen]').value = response.body.query.fridayopen ;document.querySelector('[annotationname = fridayclose]').value = response.body.query.fridayclose ;document.querySelector('[annotationname = usertown]').value = response.body.query.usertown ;document.querySelector('[annotationname = userregion]').value = response.body.query.userregion ;document.querySelector('[annotationname = useraddress]').value = response.body.query.useraddress ;document.querySelector('[annotationname = userpc]').value = response.body.query.userpc ;document.querySelector('[annotationname = usercategory]').value = response.body.query.usercategory ;{   location.href= '/Profile' ;}}});};window.onload = () => {let userId = window.location.pathname.replace('/editProfile/','');apiUserApi.getuser( userId, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const map = new Map();try { document.querySelector('[annotationname = username]').value = response.body.query.username; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = useremail]').value = response.body.query.useremail; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = userstatus]').value = response.body.query.userstatus; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = usercategory]').value = response.body.query.usercategory; } catch (e) { console.log(e) };try { 
-      if(response.body.query.userimage !== undefined){
-        if(document.querySelector('[annotationname = userimage]').getAttribute('type') === 'file'){
-          document.querySelector('[annotationname = userimage]').setAttribute('data-image-base64',response.body.query.userimage.data);
-          let fileName = response.body.query.userimage.name;
-          let file = new File([response.body.query.userimage.data], fileName,{lastModified:new Date().getTime()}, 'utf-8');
-          let container = new DataTransfer();
-          container.items.add(file);
-
-          document.querySelector("[annotationname = userimage]").files = container.files;
-        }
-        else {
-          document.querySelector('[annotationname = userimage]').src = response.body.query.userimage.data ;
-        }
-        document.querySelector('[annotationname = userimage]').name = response.body.query.userimage.name ;
-      }
-       } catch (e) { console.log(e) };try { document.querySelector('[annotationname = mondayopen]').value = response.body.query.mondayopen; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = mondayclose]').value = response.body.query.mondayclose; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = tuesdayopen]').value = response.body.query.tuesdayopen; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = tuesdayclose]').value = response.body.query.tuesdayclose; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = wednesdayopen]').value = response.body.query.wednesdayopen; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = wednesdayclose]').value = response.body.query.wednesdayclose; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = thursdayopen]').value = response.body.query.thursdayopen; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = thursdayclose]').value = response.body.query.thursdayclose; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = fridayopen]').value = response.body.query.fridayopen; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = fridayclose]').value = response.body.query.fridayclose; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = usertown]').value = response.body.query.usertown; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = userregion]').value = response.body.query.userregion; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = useraddress]').value = response.body.query.useraddress; } catch (e) { console.log(e) };try { document.querySelector('[annotationname = userpc]').value = response.body.query.userpc; } catch (e) { console.log(e) };
-    // Retrieve current data from local storage
-    const storedData = window.localStorage.getItem("data");
-    const currentData = storedData
-        ? new Map(JSON.parse(storedData))
-        : new Map();
-
-    // Add new data to current data
-    const newData = Array.from(map.entries());
-    newData.forEach(([key, value]) => {
-        currentData.set(key, value);
-    });
-
-    // Save updated data to local storage
-    window.localStorage.setItem(
-        "data",
-        JSON.stringify(Array.from(currentData.entries()))
-    );
-    }});};
+                             );
+      };
+      window.onload = () => {
+        // let userId = window.location.pathname.replace('/editProfile/','');
+        let user = JSON.parse(localStorage.getItem('user'));
+        // apiUserApi.getuser( userId, (error, data, response) => {
+        //   if (error) {
+        //     console.error(error);
+        //   }
+        //   else {
+            // console.log('API called successfully. Returned data: ' + data);
+            try {
+              document.querySelector('[annotationname = username]').value = user.username;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = useremail]').value = user.useremail;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = userstatus]').value = user.userstatus;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = usercategory]').value = user.usercategory;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              if(user.userimage !== undefined){
+                if(document.querySelector('[annotationname = userimage]').getAttribute('type') === 'file'){
+                  document.querySelector('[annotationname = userimage]').setAttribute('data-image-base64',user.userimage.data);
+                  let fileName = user.userimage.name;
+                  let file = new File([user.userimage.data], fileName,{
+                    lastModified:new Date().getTime()}
+                                      , 'utf-8');
+                  let container = new DataTransfer();
+                  container.items.add(file);
+                  document.querySelector("[annotationname = userimage]").files = container.files;
+                }
+                else {
+                  document.querySelector('[annotationname = userimage]').src = user.userimage.data ;
+                }
+                document.querySelector('[annotationname = userimage]').name = user.userimage.name ;
+              }
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = mondayopen]').value = user.mondayopen;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = mondayclose]').value = user.mondayclose;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = tuesdayopen]').value = user.tuesdayopen;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = tuesdayclose]').value = user.tuesdayclose;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = wednesdayopen]').value = user.wednesdayopen;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = wednesdayclose]').value = user.wednesdayclose;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = thursdayopen]').value = user.thursdayopen;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = thursdayclose]').value = user.thursdayclose;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = fridayopen]').value = user.fridayopen;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = fridayclose]').value = user.fridayclose;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = usertown]').value = user.usertown;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = userregion]').value = user.userregion;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = useraddress]').value = user.useraddress;
+            }
+            catch (e) {
+              console.log(e) };
+            try {
+              document.querySelector('[annotationname = userpc]').value = user.userpc;
+            }
+            catch (e) {
+              console.log(e) };
+        //   }
+        // }
+        //                   );
+      };

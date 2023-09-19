@@ -75,6 +75,60 @@ export default class UserApi {
       );
     }
 
+    loginuser(useremail, password, callback) {
+      let postBody = { "useremail": useremail, "password": password };
+      // verify the required parameter 'user' is set
+      if (useremail === undefined || useremail === null) {
+        throw new Error("Missing the required parameter 'user' when calling createuser");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = User;
+      return this.apiClient.callApi(
+        '/login', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    registeruser(useremail, password, callback) {
+      let postBody = { "useremail": useremail, "password": password };
+      // verify the required parameter 'user' is set
+      if (useremail === undefined || useremail === null) {
+        throw new Error("Missing the required parameter 'user' when calling createuser");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = User;
+      return this.apiClient.callApi(
+        '/register', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
     /**
      * Callback function to receive the result of the deleteuser operation.
      * @callback module:api/UserApi~deleteuserCallback

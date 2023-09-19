@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import Product from './Product';
 import User from './User';
 
 /**
@@ -27,9 +28,9 @@ class Order {
      * @param orderstatus {String} 
      * @param ordersupplier {module:model/User} 
      */
-    constructor(orderprice, orderstatus, ordersupplier) { 
+    constructor(orderprice, orderstatus, ordersupplier, ordercustomer, orderproducts) { 
         
-        Order.initialize(this, orderprice, orderstatus, ordersupplier);
+        Order.initialize(this, orderprice, orderstatus, ordersupplier, ordercustomer, orderproducts);
     }
 
     /**
@@ -37,10 +38,12 @@ class Order {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, orderprice, orderstatus, ordersupplier) { 
+    static initialize(obj, orderprice, orderstatus, ordersupplier, ordercustomer, orderproducts) { 
         obj['orderprice'] = orderprice;
         obj['orderstatus'] = orderstatus;
         obj['ordersupplier'] = ordersupplier;
+        obj['ordercustomer'] = ordercustomer;
+        obj['orderproducts'] = orderproducts;
     }
 
     /**
@@ -65,6 +68,12 @@ class Order {
             }
             if (data.hasOwnProperty('ordersupplier')) {
                 obj['ordersupplier'] = ApiClient.convertToType(data['ordersupplier'], User);
+            }
+            if (data.hasOwnProperty('ordercustomer')) {
+                obj['ordercustomer'] = ApiClient.convertToType(data['ordercustomer'], User);
+            }
+            if (data.hasOwnProperty('orderproducts')) {
+                obj['orderproducts'] = ApiClient.convertToType(data['orderproducts'], [Product, 'String']);
             }
         }
         return obj;
@@ -92,6 +101,10 @@ Order.prototype['orderstatus'] = undefined;
  * @member {module:model/User} ordersupplier
  */
 Order.prototype['ordersupplier'] = undefined;
+
+Order.prototype['ordercustomer'] = undefined;
+
+Order.prototype['orderproducts'] = undefined;
 
 
 
