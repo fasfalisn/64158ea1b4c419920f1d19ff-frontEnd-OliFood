@@ -72,7 +72,7 @@ window.onload = () => {
       savedOrder = response.body.query.orderproducts;
       const map = new Map();
       try {
-        document.querySelector('[annotationname = orderprice]').textContent = response.body.query.orderprice;
+        document.querySelector('[annotationname = orderprice]').textContent = response.body.query.orderprice + "€";
       }
       catch (e) {
         console.log(e) };
@@ -158,10 +158,10 @@ window.onload = () => {
                               try {
                                 const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productPrice']");
                                 if(insideSubDataElement !== null){
-                                  insideSubDataElement.textContent = item.orderproduct.productPrice;
+                                  insideSubDataElement.textContent = item.orderproduct.productPrice + "€";
                                 }
                                 else if(subDataElements[i].getAttribute('annotationname') === 'productPrice'){
-                                  subDataElements[i].textContent = item.orderproduct.productPrice;
+                                  subDataElements[i].textContent = item.orderproduct.productPrice + "€";
                                 }
                               }
                               catch (e) {
@@ -191,12 +191,12 @@ window.onload = () => {
                                 try {
                                     const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productSum']");
                                     if(insideSubDataElement !== null){
-                                      insideSubDataElement.textContent = item.orderproduct.productPrice * item.orderproductquantity;
-                                      orderSum += item.orderproduct.productPrice * item.orderproductquantity;
+                                      insideSubDataElement.textContent = item.orderproduct.productPrice * item.orderproductquantity + "€";
+                                      orderSum += item.orderproduct.productPrice * item.orderproductquantity ;
                                       console.log(orderSum);
                                     }
                                     else if(subDataElements[i].getAttribute('annotationname') === 'productSum'){
-                                      subDataElements[i].textContent = item.orderproduct.productPrice * item.orderproductquantity;
+                                      subDataElements[i].textContent = item.orderproduct.productPrice * item.orderproductquantity + "€";
                                       orderSum += item.orderproduct.productPrice * item.orderproductquantity;
                                       console.log(orderSum);
                                     }

@@ -164,10 +164,10 @@ window.onload = () => {
                       try {
                         const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productPrice']");
                         if(insideSubDataElement !== null){
-                          insideSubDataElement.textContent = product.productPrice;
+                          insideSubDataElement.textContent = product.productPrice + "€";
                         }
                         else if(subDataElements[i].getAttribute('annotationname') === 'productPrice'){
-                          subDataElements[i].textContent = product.productPrice;
+                          subDataElements[i].textContent = product.productPrice + "€";
                         }
                       }
                       catch (e) {
@@ -197,12 +197,12 @@ window.onload = () => {
                         try {
                             const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productSum']");
                             if(insideSubDataElement !== null){
-                              insideSubDataElement.textContent = product.productPrice * savedProduct.quantity;
+                              insideSubDataElement.textContent = product.productPrice * savedProduct.quantity + "€";
                               orderSum += product.productPrice * savedProduct.quantity;
                               console.log(orderSum);
                             }
                             else if(subDataElements[i].getAttribute('annotationname') === 'productSum'){
-                              subDataElements[i].textContent = product.productPrice * savedProduct.quantity;
+                              subDataElements[i].textContent = product.productPrice * savedProduct.quantity + "€";
                               orderSum += product.productPrice * savedProduct.quantity;
                               console.log(orderSum);
                             }

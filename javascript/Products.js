@@ -204,7 +204,7 @@ window.onload = () => {
                                       tableDatauserproducts.length -
                                           indexuserproducts -
                                           1
-                                  ].productPrice;
+                                  ].productPrice + "€";
                           }
                       } catch (e) {
                           console.log(e);
