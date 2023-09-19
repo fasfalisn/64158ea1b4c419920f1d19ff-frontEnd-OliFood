@@ -20,11 +20,11 @@
 }
 
 .list-item-content {
-    display: flex !important;
+    display: flex ;
 }
 
 .flex {
-    display: flex !important;
+    display: flex ;
 }
 
 .w3-row-padding img {
@@ -230,6 +230,7 @@ h6 {
     justify-content: center !important;
     flex-direction: column !important;
     width: 60% !important;
+    box-shadow: 2px 7px 9px rgba(0, 0, 0, 0.25) !important;
 }
 
 .heading.p-2.m-0.classRule-iu7oqs {

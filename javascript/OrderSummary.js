@@ -217,6 +217,23 @@ window.onload = () => {
         
       }
                   );
+
+          [...subDataElements].forEach(
+            (element, index) => {
+                parent = subDataElements[index];
+                if (index >= Object.keys(savedOrder).length) {
+                    while (parent.tagName !== "TR") {
+                        parent = parent.parentNode;
+                    }
+                    console.log(parent);
+                    parent.style.display = "none";
+                } else {
+                    subDataElements[
+                        index
+                    ].style.display = "";
+                }
+            }
+        );
         // try {
         //     const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'ordersum']");
         //     if(insideSubDataElement !== null){

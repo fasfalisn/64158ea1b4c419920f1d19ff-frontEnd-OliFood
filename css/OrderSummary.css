@@ -20,11 +20,11 @@
 }
 
 .list-item-content {
-    display: flex !important;
+    display: flex ;
 }
 
 .flex {
-    display: flex !important;
+    display: flex ;
 }
 
 .w3-row-padding img {

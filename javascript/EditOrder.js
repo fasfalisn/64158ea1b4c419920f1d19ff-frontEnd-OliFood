@@ -209,6 +209,24 @@ window.onload = () => {
                 
               }
                           );
+              [...subDataElements].forEach(
+                (element, index) => {
+                    console.log(element);
+                    parent = subDataElements[index];
+                    if (index >= savedOrder.length) {
+                        while (parent.tagName !== "TR") {
+                            parent = parent.parentNode;
+                        }
+                        console.log(parent);
+                        parent.style.display = "none";
+                    } else {
+                        subDataElements[
+                            index
+                        ].style.display = "";
+                    }
+                }
+            );
+
       // Retrieve current data from local storage
       const storedData = window.localStorage.getItem("data");
       const currentData = storedData
