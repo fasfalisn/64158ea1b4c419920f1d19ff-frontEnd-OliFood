@@ -11,7 +11,7 @@ document.getElementById('ir5fh').onclick = (event) => {
     user['useremail'] = document.querySelector("[annotationname = 'useremail']").value;
     user['usercategory'] = document.querySelector("[annotationname = 'usercategory']").value;
     user['password'] = document.querySelector("[annotationname = 'password']").value;
-    apiUserApi.registeruser( user['username'], user['password'], (error, data, response) => {
+    apiUserApi.registeruser( user['useremail'], user['password'], (error, data, response) => {
       if (error) {
         console.error(error);
       }
