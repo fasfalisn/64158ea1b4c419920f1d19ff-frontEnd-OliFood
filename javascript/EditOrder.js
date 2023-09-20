@@ -177,6 +177,14 @@ window.onload = () => {
                               catch (e) {
                                 console.log(e) };
                               try {
+                                const insideSubDataElement = subDataElements[i].querySelector("[listimage]");
+                                if(insideSubDataElement !== null){
+                                  insideSubDataElement.src = item.orderproduct.productImage.data;
+                                }
+                              }
+                              catch (e) {
+                                console.log(e) };
+                              try {
                                 const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'productPrice']");
                                 if(insideSubDataElement !== null){
                                   insideSubDataElement.textContent = item.orderproduct.productPrice + "€";

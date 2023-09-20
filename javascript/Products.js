@@ -88,7 +88,7 @@ window.onload = () => {
   } catch (e) {
       console.log(e);
   }
-  
+
   let userId = window.location.pathname.replace("/Products/", "");
   apiUserApi.getuser(userId, (error, data, response) => {
       if (error) {
@@ -166,7 +166,11 @@ window.onload = () => {
                       insideSubdocument.querySelectorAll(
                           "[annotationname = 'productName']"
                       );
-                  console.log(tableDataElementproductName);
+                  const tableDataElementproductImage =
+                  insideSubdocument.querySelectorAll(
+                      "[listimage]"
+                  );
+                console.log(tableDataElementproductName);
                   const tableDataElementproductPrice =
                       insideSubdocument.querySelectorAll(
                           "[annotationname = 'productPrice']"
@@ -224,7 +228,24 @@ window.onload = () => {
                       } catch (e) {
                           console.log(e);
                       }
-
+                      try {
+                        if (
+                            tableDataElementproductImage[
+                                indexuserproducts
+                            ] !== null
+                        ) {
+                            tableDataElementproductImage[
+                                indexuserproducts
+                            ].src =
+                                tableDatauserproducts[
+                                    tableDatauserproducts.length -
+                                        indexuserproducts -
+                                        1
+                                ].productImage.data;
+                        }
+                      } catch (e) {
+                          console.log(e);
+                      }
                       {
                           let parenttableDataElementproductName =
                               tableDataElementproductName[indexuserproducts];

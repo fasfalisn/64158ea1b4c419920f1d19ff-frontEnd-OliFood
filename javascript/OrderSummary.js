@@ -118,6 +118,11 @@ window.onload = () => {
       catch (e) {
         console.log(e) };
       try {
+        document.getElementById('iccwk').src = response.body.query.userimage.data;
+      }
+      catch (e) {
+        console.log(e) };
+      try {
         document.querySelector('[annotationname = useraddress]').textContent = response.body.query.useraddress;
       }
       catch (e) {
@@ -194,6 +199,14 @@ window.onload = () => {
                         else if(subDataElements[i].getAttribute('annotationname') === 'productCategory'){
                         subDataElements[i].textContent = savedProduct.quantity;
                         }
+                    }
+                    catch (e) {
+                        console.log(e) };
+                    try {
+                      const insideSubDataElement = subDataElements[i].querySelector("[listimage]");
+                      if(insideSubDataElement !== null){
+                        insideSubDataElement.src = product.productImage.data;
+                      }
                     }
                     catch (e) {
                         console.log(e) };
