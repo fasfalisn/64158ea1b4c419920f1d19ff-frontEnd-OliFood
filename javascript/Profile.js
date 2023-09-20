@@ -40,6 +40,9 @@ window.onload = () => {
   // let userId = window.location.pathname.replace('/Profile/','');
   let user = JSON.parse(localStorage.getItem('user'));
   console.log(JSON.parse(localStorage.getItem('user')));
+  if(user.usercategory === 'Πελάτης'){
+    document.getElementById('ibznrl').style.display = 'none';
+  }
 
   // apiUserApi.getuser( userId, (error, data, response) => {
   //   if (error) {

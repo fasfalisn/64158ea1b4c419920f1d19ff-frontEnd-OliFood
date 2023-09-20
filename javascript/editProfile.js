@@ -95,16 +95,18 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
           data: document.querySelector("[annotationname = 'userimage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'userimage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'userimage']").src,
           name: document.querySelector("[annotationname = 'userimage']").getAttribute("name")
         };
-        user['mondayclose'] = document.querySelector("[annotationname = 'mondayclose']").value;
-        user['mondayopen'] = document.querySelector("[annotationname = 'mondayopen']").value;
-        user['tuesdayopen'] = document.querySelector("[annotationname = 'tuesdayopen']").value;
-        user['tuesdayclose'] = document.querySelector("[annotationname = 'tuesdayclose']").value;
-        user['wednesdayopen'] = document.querySelector("[annotationname = 'wednesdayopen']").value;
-        user['wednesdayclose'] = document.querySelector("[annotationname = 'wednesdayclose']").value;
-        user['thursdayclose'] = document.querySelector("[annotationname = 'thursdayclose']").value;
-        user['thursdayopen'] = document.querySelector("[annotationname = 'thursdayopen']").value;
-        user['fridayopen'] = document.querySelector("[annotationname = 'fridayopen']").value;
-        user['fridayclose'] = document.querySelector("[annotationname = 'fridayclose']").value;
+        if(document.querySelector("[annotationname = 'usercategory']").value === 'Προμηθευτής'){
+          user['mondayclose'] = document.querySelector("[annotationname = 'mondayclose']").value|| '';
+          user['mondayopen'] = document.querySelector("[annotationname = 'mondayopen']").value;
+          user['tuesdayopen'] = document.querySelector("[annotationname = 'tuesdayopen']").value;
+          user['tuesdayclose'] = document.querySelector("[annotationname = 'tuesdayclose']").value;
+          user['wednesdayopen'] = document.querySelector("[annotationname = 'wednesdayopen']").value;
+          user['wednesdayclose'] = document.querySelector("[annotationname = 'wednesdayclose']").value;
+          user['thursdayclose'] = document.querySelector("[annotationname = 'thursdayclose']").value;
+          user['thursdayopen'] = document.querySelector("[annotationname = 'thursdayopen']").value;
+          user['fridayopen'] = document.querySelector("[annotationname = 'fridayopen']").value;
+          user['fridayclose'] = document.querySelector("[annotationname = 'fridayclose']").value;
+        }
         user['usertown'] = document.querySelector("[annotationname = 'usertown']").value;
         user['userregion'] = document.querySelector("[annotationname = 'userregion']").value;
         user['useraddress'] = document.querySelector("[annotationname = 'useraddress']").value;
@@ -155,9 +157,22 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
         }
                              );
       };
+
+      document.getElementById('iu9afr').addEventListener('change', () => {
+        if(document.querySelector("[annotationname = 'usercategory']").value === 'Προμηθευτής'){
+          document.getElementById('ibznrl').style.display = 'block';
+        }else {
+          document.getElementById('ibznrl').style.display = 'none';
+        }
+      });
+
+      
       window.onload = () => {
         // let userId = window.location.pathname.replace('/editProfile/','');
         let user = JSON.parse(localStorage.getItem('user'));
+        if(user.usercategory === 'Πελάτης'){
+          document.getElementById('ibznrl').style.display = 'none';
+        }
         // apiUserApi.getuser( userId, (error, data, response) => {
         //   if (error) {
         //     console.error(error);
