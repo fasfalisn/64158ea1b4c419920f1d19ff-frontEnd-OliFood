@@ -63,6 +63,13 @@ document.getElementById('i4ng46').onclick = (event) => {
 window.onload = () => {
   let orderId = window.location.pathname.replace('/EditOrder/','');
   let savedOrder;
+
+  // Only show update tab to supplier
+  let userCategory = JSON.parse(localStorage.getItem('user')).usercategory;
+  if(userCategory === 'Πελάτης'){
+    document.getElementById('i2n549').style.display = 'none';
+  }
+
   apiOrderApi.getorder( orderId, (error, data, response) => {
     if (error) {
       console.error(error);

@@ -87,9 +87,20 @@ document.getElementById('i7vj64').onclick = (event) => {
     location.href = '/EditOrder/' + transitionId;
   }
 }; 
+document.getElementById('iu6xvc').onclick = (event) => {
+  event.preventDefault();
+  {
+    location.href = '/CustomerHome';
+  }
+}
 
 window.onload = () => {
   let user = JSON.parse(localStorage.getItem('user'));
+
+  if (user.usercategory === 'Προμηθευτής'){
+    document.getElementById('i92jhd').style.display = 'none';
+  }
+  
   const filtermyorders = {
       $or: [
         { ordercustomer: user._id },
@@ -138,7 +149,7 @@ apiOrderApi.getByParamsorder( filtermyorders, (error, data, response) => {
             try {
               const attributeSubdocumentElement = insideSubdocument.querySelector("[annotationname = 'username']");
               if (attributeSubdocumentElement !== null) {
-                attributeSubdocumentElement.textContent = data[data.length - i - 1].ordersupplier.username;
+                attributeSubdocumentElement.textContent = (user.usercategory === 'Πελάτης') ? data[data.length - i - 1].ordersupplier.username : data[data.length - i - 1].ordercustomer.username;
               }
             }
             catch (e) {

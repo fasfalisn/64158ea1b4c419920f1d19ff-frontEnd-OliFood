@@ -175,7 +175,7 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = userstatus]').value = user.userstatus;
+              document.querySelector('[annotationname = userstatus]').value = user.userstatus || '';
             }
             catch (e) {
               console.log(e) };
@@ -205,72 +205,72 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = mondayopen]').value = user.mondayopen;
+              document.querySelector('[annotationname = mondayopen]').value = user.mondayopen || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = mondayclose]').value = user.mondayclose;
+              document.querySelector('[annotationname = mondayclose]').value = user.mondayclose || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = tuesdayopen]').value = user.tuesdayopen;
+              document.querySelector('[annotationname = tuesdayopen]').value = user.tuesdayopen || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = tuesdayclose]').value = user.tuesdayclose;
+              document.querySelector('[annotationname = tuesdayclose]').value = user.tuesdayclose || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = wednesdayopen]').value = user.wednesdayopen;
+              document.querySelector('[annotationname = wednesdayopen]').value = user.wednesdayopen || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = wednesdayclose]').value = user.wednesdayclose;
+              document.querySelector('[annotationname = wednesdayclose]').value = user.wednesdayclose || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = thursdayopen]').value = user.thursdayopen;
+              document.querySelector('[annotationname = thursdayopen]').value = user.thursdayopen || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = thursdayclose]').value = user.thursdayclose;
+              document.querySelector('[annotationname = thursdayclose]').value = user.thursdayclose || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = fridayopen]').value = user.fridayopen;
+              document.querySelector('[annotationname = fridayopen]').value = user.fridayopen || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = fridayclose]').value = user.fridayclose;
+              document.querySelector('[annotationname = fridayclose]').value = user.fridayclose || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = usertown]').value = user.usertown;
+              document.querySelector('[annotationname = usertown]').value = user.usertown || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = userregion]').value = user.userregion;
+              document.querySelector('[annotationname = userregion]').value = user.userregion || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = useraddress]').value = user.useraddress;
+              document.querySelector('[annotationname = useraddress]').value = user.useraddress || '';
             }
             catch (e) {
               console.log(e) };
             try {
-              document.querySelector('[annotationname = userpc]').value = user.userpc;
+              document.querySelector('[annotationname = userpc]').value = user.userpc || '';
             }
             catch (e) {
               console.log(e) };

@@ -50,7 +50,7 @@
 }
 
 .flex {
-    display: flex !important;
+    display: flex;
 }
 
 .w3-row-padding img {

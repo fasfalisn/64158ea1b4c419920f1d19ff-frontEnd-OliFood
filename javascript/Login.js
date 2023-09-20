@@ -20,9 +20,14 @@ document.getElementById('ir5fh').onclick = (event) => {
       //   console.log(JSON.stringify(response.body));
         localStorage.setItem('user', JSON.stringify(response.body.user));
       //   console.log(JSON.parse(localStorage.getItem('user')));
+      if(response.body.user.usercategory === 'Προμηθευτής')
         {
-          location.href= '/CustomerHome' ;
+          location.href= '/MyOrders' ;
         }
+      else 
+      {
+        location.href=  '/CustomerHome';
+      }
       }
     }
                          );

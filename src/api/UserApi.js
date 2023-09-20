@@ -103,7 +103,7 @@ export default class UserApi {
     }
 
     registeruser(useremail, password, callback) {
-      let postBody = { "useremail": useremail, "password": password };
+      let postBody = { "useremail": useremail, "password": password, "username": username, "usercategory": usercategory};
       // verify the required parameter 'user' is set
       if (useremail === undefined || useremail === null) {
         throw new Error("Missing the required parameter 'user' when calling createuser");

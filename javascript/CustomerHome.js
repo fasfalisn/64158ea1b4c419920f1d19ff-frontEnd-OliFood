@@ -68,6 +68,10 @@ let apiUserApi = new TempApi.UserApi(); import TempApi from '../src/index'; docu
 
 
 window.onload = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if(user.usercategory === 'Προμηθευτής'){
+      location.href = "/MyOrders"
+  }
   const filtergetSuppliers = { usercategory: { $eq: "Προμηθευτής" } };
   apiUserApi.getByParamsuser(filtergetSuppliers, (error, data, response) => {
       if (error) {
