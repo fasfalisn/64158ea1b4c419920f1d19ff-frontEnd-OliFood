@@ -100,6 +100,20 @@ window.onload = () => {
   if (user.usercategory === 'Προμηθευτής'){
     document.getElementById('i92jhd').style.display = 'none';
   }
+
+  if(user.userimage.data !== undefined){
+    try {
+        document.getElementById('ipv4j').src = user.userimage.data;
+    } catch (e) {
+        console.log(e);
+    }
+  }
+
+  try {
+      document.getElementById('ih2iz').textContent = user.username;
+  } catch (e) {
+      console.log(e);
+  }
   
   const filtermyorders = {
       $or: [

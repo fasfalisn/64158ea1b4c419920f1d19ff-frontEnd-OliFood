@@ -90,6 +90,20 @@ document.getElementById('iz6293').onclick = (event) => {
 };
 
 window.onload = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if(user.userimage.data !== undefined){
+    try {
+        document.getElementById('ipv4j').src = user.userimage.data;
+    } catch (e) {
+        console.log(e);
+    }
+  }
+
+  try {
+      document.getElementById('ih2iz').textContent = user.username;
+  } catch (e) {
+      console.log(e);
+  }
   let userId = window.location.pathname.replace('/OrderSummary/','');
   apiUserApi.getuser( userId, (error, data, response) => {
     if (error) {

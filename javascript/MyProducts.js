@@ -93,6 +93,21 @@ window.onload = () => {
   // let userId = window.location.pathname.replace("/MyProducts/", "");
   let user = JSON.parse(localStorage.getItem('user'));
   let userId = user._id;
+
+  if(user.userimage.data !== undefined){
+    try {
+        document.getElementById('ipv4j').src = user.userimage.data;
+    } catch (e) {
+        console.log(e);
+    }
+  }
+
+  try {
+      document.getElementById('ih2iz').textContent = user.username;
+  } catch (e) {
+      console.log(e);
+  }
+  
   apiUserApi.getuser(userId, (error, data, response) => {
       if (error) {
           console.error(error);

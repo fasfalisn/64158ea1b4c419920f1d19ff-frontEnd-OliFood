@@ -65,9 +65,23 @@ window.onload = () => {
   let savedOrder;
 
   // Only show update tab to supplier
-  let userCategory = JSON.parse(localStorage.getItem('user')).usercategory;
-  if(userCategory === 'Πελάτης'){
+  let user = JSON.parse(localStorage.getItem('user'));
+  if(user.usercategory === 'Πελάτης'){
     document.getElementById('i2n549').style.display = 'none';
+  }
+
+  if(user.userimage.data !== undefined){
+    try {
+        document.getElementById('ipv4j').src = user.userimage.data;
+    } catch (e) {
+        console.log(e);
+    }
+  }
+
+  try {
+      document.getElementById('ih2iz').textContent = user.username;
+  } catch (e) {
+      console.log(e);
   }
 
   apiOrderApi.getorder( orderId, (error, data, response) => {

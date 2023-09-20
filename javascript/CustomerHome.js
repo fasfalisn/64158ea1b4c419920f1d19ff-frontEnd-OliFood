@@ -72,6 +72,21 @@ window.onload = () => {
   if(user.usercategory === 'Προμηθευτής'){
       location.href = "/MyOrders"
   }
+
+  if(user.userimage.data !== undefined){
+    try {
+        document.getElementById('ipv4j').src = user.userimage.data;
+    } catch (e) {
+        console.log(e);
+    }
+  }
+
+  try {
+      document.getElementById('ih2iz').textContent = user.username;
+  } catch (e) {
+      console.log(e);
+  }
+
   const filtergetSuppliers = { usercategory: { $eq: "Προμηθευτής" } };
   apiUserApi.getByParamsuser(filtergetSuppliers, (error, data, response) => {
       if (error) {
@@ -111,6 +126,17 @@ window.onload = () => {
                           subDataElements[i].textContent =
                               data[data.length - i - 1].username;
                       }
+                  } catch (e) {
+                      console.log(e);
+                  }
+                  try {
+                    const insideSubDataElement = subDataElements[
+                        i
+                    ].querySelector("[datacardimage='true']");
+                    if (insideSubDataElement !== null) {
+                        insideSubDataElement.src =
+                            data[data.length - i - 1].userimage.data;
+                    } 
                   } catch (e) {
                       console.log(e);
                   }

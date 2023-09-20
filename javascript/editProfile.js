@@ -166,12 +166,26 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
         }
       });
 
-      
+
       window.onload = () => {
         // let userId = window.location.pathname.replace('/editProfile/','');
         let user = JSON.parse(localStorage.getItem('user'));
         if(user.usercategory === 'Πελάτης'){
           document.getElementById('ibznrl').style.display = 'none';
+        }
+
+        if(user.userimage.data !== undefined){
+          try {
+              document.getElementById('ipv4j').src = user.userimage.data;
+          } catch (e) {
+              console.log(e);
+          }
+        }
+      
+        try {
+            document.getElementById('ih2iz').textContent = user.username;
+        } catch (e) {
+            console.log(e);
         }
         // apiUserApi.getuser( userId, (error, data, response) => {
         //   if (error) {
