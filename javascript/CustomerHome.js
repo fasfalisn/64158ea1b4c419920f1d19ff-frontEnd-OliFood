@@ -66,6 +66,29 @@ let apiUserApi = new TempApi.UserApi(); import TempApi from '../src/index'; docu
   }
 }; 
 
+// Search Functionality
+const searchInput = document.getElementById('i5v55'); 
+
+const subDataElements = [
+  ...document.getElementById('ity8k').querySelectorAll("[dataitem='true']")
+];
+
+searchInput.addEventListener('input', function() {
+  const searchTerm = this.value.toLowerCase(); 
+
+  subDataElements.forEach(element => {
+    const usernameElement = element.querySelector("[annotationname='username']");
+    if (usernameElement && !usernameElement.textContent.includes('Προμηθευτής')) {
+        console.log(usernameElement.textContent);
+      const username = usernameElement.textContent.toLowerCase();
+      if (username.includes(searchTerm)) {
+        element.style.display = 'block'; // Show the element
+      } else {
+        element.style.display = 'none'; // Hide the element
+      }
+    }
+  });
+});
 
 window.onload = () => {
   const user = JSON.parse(localStorage.getItem('user'));
