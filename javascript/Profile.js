@@ -42,6 +42,7 @@ window.onload = () => {
   console.log(JSON.parse(localStorage.getItem('user')));
   if(user.usercategory === 'Πελάτης'){
     document.getElementById('ibznrl').style.display = 'none';
+    document.getElementById('ixwluj').style.display = 'none';
   }
 
   if(user.userimage.data !== undefined){
