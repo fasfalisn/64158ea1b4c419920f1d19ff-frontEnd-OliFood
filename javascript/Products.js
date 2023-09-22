@@ -74,6 +74,10 @@ document.getElementById('i878w').onclick = (event) => {
 }; 
 
 window.onload = () => {
+const spinner = document.getElementById('spinner');
+const list = document.getElementById('icikqk');
+spinner.style.display = 'block';
+list.style.display = 'none';
   const user = JSON.parse(localStorage.getItem('user'));
   if(user.userimage.data !== undefined){
     try {
@@ -94,6 +98,8 @@ window.onload = () => {
       if (error) {
           console.error(error);
       } else {
+        spinner.style.display = 'none';
+        list.style.display = 'block';
           console.log("API called successfully. Returned data: " + data);
           const map = new Map();
           try {

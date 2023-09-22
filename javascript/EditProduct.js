@@ -136,6 +136,10 @@ document.getElementById('i0cmaj').onclick = (event) => {
 }; 
 
 window.onload = () => {
+  const spinner = document.getElementById('spinner');
+  const list = document.getElementById('iiekj');
+  spinner.style.display = 'block';
+  list.style.display = 'none';
   let productId = window.location.pathname.replace('/EditProduct/', ''); 
 
   const user = JSON.parse(localStorage.getItem('user'));
@@ -155,6 +159,8 @@ window.onload = () => {
   
   apiProductApi.getproduct(productId, (error, data, response) => {
     if (error) { console.error(error); } else {
+      spinner.style.display = 'none';
+      list.style.display = 'block';
       console.log('API called successfully. Returned data: ' + data); try { document.querySelector('[annotationname = productName]').value = response.body.query.productName; } catch (e) { console.log(e) }; try { document.querySelector('[annotationname = productPrice]').value = response.body.query.productPrice; } catch (e) { console.log(e) }; try { document.querySelector('[annotationname = productCategory]').value = response.body.query.productCategory; } catch (e) { console.log(e) }; try {
         if (response.body.query.productImage !== undefined) {
           if (document.querySelector('[annotationname = productImage]').getAttribute('type') === 'file') {

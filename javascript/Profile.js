@@ -37,6 +37,8 @@ document.getElementById('i0ydy').onclick = (event) => {
 };
 
 window.onload = () => {
+  const spinner = document.getElementById('spinner');
+  const list = document.getElementById('i03afv');
   // let userId = window.location.pathname.replace('/Profile/','');
   let user = JSON.parse(localStorage.getItem('user'));
   console.log(JSON.parse(localStorage.getItem('user')));
@@ -44,6 +46,8 @@ window.onload = () => {
     document.getElementById('ibznrl').style.display = 'none';
     document.getElementById('ixwluj').style.display = 'none';
   }
+  spinner.style.display = 'none';
+  list.style.display = 'block';
 
   if(user.userimage.data !== undefined){
     try {

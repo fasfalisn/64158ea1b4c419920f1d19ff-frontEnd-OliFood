@@ -90,6 +90,10 @@ document.getElementById('iz9eo8').onclick = (event) => {
 }; 
 
 window.onload = () => {
+    const spinner = document.getElementById('spinner');
+    const list = document.getElementById('iksqg4');
+    spinner.style.display = 'block';
+    list.style.display = 'none';
   // let userId = window.location.pathname.replace("/MyProducts/", "");
   let user = JSON.parse(localStorage.getItem('user'));
   let userId = user._id;
@@ -112,6 +116,8 @@ window.onload = () => {
       if (error) {
           console.error(error);
       } else {
+        spinner.style.display = 'none';
+        list.style.display = 'block';
           console.log("API called successfully. Returned data: " + data);
           const map = new Map();
           try {

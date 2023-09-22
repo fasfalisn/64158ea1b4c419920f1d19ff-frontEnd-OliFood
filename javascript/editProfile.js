@@ -168,11 +168,15 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
 
 
       window.onload = () => {
+        const spinner = document.getElementById('spinner');
+        const list = document.getElementById('i03afv');
         // let userId = window.location.pathname.replace('/editProfile/','');
         let user = JSON.parse(localStorage.getItem('user'));
         if(user.usercategory === 'Πελάτης'){
           document.getElementById('ibznrl').style.display = 'none';
         }
+        spinner.style.display = 'none';
+        list.style.display = 'block';
 
         if(user.userimage.data !== undefined){
           try {

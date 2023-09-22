@@ -61,6 +61,10 @@ document.getElementById('i4ng46').onclick = (event) => {
 
 
 window.onload = () => {
+  const spinner = document.getElementById('spinner');
+  const list = document.getElementById('ilt8fg');
+  spinner.style.display = 'block';
+  list.style.display = 'none';
   let orderId = window.location.pathname.replace('/EditOrder/','');
   let savedOrder;
 
@@ -89,6 +93,8 @@ window.onload = () => {
       console.error(error);
     }
     else {
+      spinner.style.display = 'none';
+      list.style.display = 'block';
       console.log('API called successfully. Returned data: ' + response.body.query.orderproducts);
       savedOrder = response.body.query.orderproducts;
       const map = new Map();

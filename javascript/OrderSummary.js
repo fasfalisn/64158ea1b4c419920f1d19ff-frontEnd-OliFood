@@ -90,6 +90,10 @@ document.getElementById('iz6293').onclick = (event) => {
 };
 
 window.onload = () => {
+  const spinner = document.getElementById('spinner');
+  const list = document.getElementById('i4if0n');
+  spinner.style.display = 'block';
+  list.style.display = 'none';
   const user = JSON.parse(localStorage.getItem('user'));
   if(user.userimage.data !== undefined){
     try {
@@ -110,6 +114,8 @@ window.onload = () => {
       console.error(error);
     }
     else {
+      spinner.style.display = 'none';
+      list.style.display = 'block';
       console.log('API called successfully. Returned data: ' + data);
       const map = new Map();
       try {
