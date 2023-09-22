@@ -18,6 +18,7 @@ document.getElementById('ir5fh').onclick = (event) => {
       else {
       //   console.log('API called successfully. Returned data: ' + data);
       //   console.log(JSON.stringify(response.body));
+        document.cookie = `accessToken=${response.body.token}`;
         localStorage.setItem('user', JSON.stringify(response.body.user));
       //   console.log(JSON.parse(localStorage.getItem('user')));
       if(response.body.user.usercategory === 'Προμηθευτής')
