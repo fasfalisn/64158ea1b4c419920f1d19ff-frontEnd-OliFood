@@ -9,12 +9,14 @@ let apiProductApi = new TempApi.ProductApi(); import TempApi from '../src/index'
   { location.href = '/editProfile'; }
 }; document.getElementById('iib2w').onclick = (event) => {
   event.preventDefault();
+  localStorage.removeItem('user');
   { location.href = '/Login'; }
 }; document.getElementById('ipavd').onclick = (event) => {
   event.preventDefault();
   { location.href = '/Profile'; }
 }; document.getElementById('iq2sl').onclick = (event) => {
   event.preventDefault();
+  localStorage.removeItem('user');
   { location.href = '/Login'; }
 }; document.getElementById('io27z').onclick = (event) => {
   event.preventDefault();
@@ -143,6 +145,9 @@ window.onload = () => {
   let productId = window.location.pathname.replace('/EditProduct/', ''); 
 
   const user = JSON.parse(localStorage.getItem('user'));
+  if(!user){
+    location.href = "/Login"
+  }
   if(user.userimage.data !== undefined){
     try {
         document.getElementById('ipv4j').src = user.userimage.data;

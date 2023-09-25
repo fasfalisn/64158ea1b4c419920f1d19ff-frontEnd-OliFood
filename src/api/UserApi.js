@@ -60,7 +60,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
-        'token': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -156,7 +156,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
-        'token': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -193,7 +193,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
-        'token': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -236,7 +236,7 @@ export default class UserApi {
         'filter': filter
       };
       let headerParams = {
-        'token': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -279,7 +279,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
-        'token': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };
@@ -325,7 +325,7 @@ export default class UserApi {
       let queryParams = {
       };
       let headerParams = {
-        'token': `Bearer ${document.cookie.split('=')[1]}`
+        'Authorization': `Bearer ${document.cookie.split('=')[1]}`
       };
       let formParams = {
       };

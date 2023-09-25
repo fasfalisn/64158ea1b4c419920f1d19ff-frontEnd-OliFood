@@ -15,12 +15,14 @@ document.getElementById('i0ydy').onclick = (event) => {
   { location.href = '/editProfile'; }
 }; document.getElementById('iib2w').onclick = (event) => {
   event.preventDefault();
+  localStorage.removeItem('user');
   { location.href = '/Login'; }
 }; document.getElementById('ipavd').onclick = (event) => {
   event.preventDefault();
   { location.href = '/Profile'; }
 }; document.getElementById('iq2sl').onclick = (event) => {
   event.preventDefault();
+  localStorage.removeItem('user');
   { location.href = '/Login'; }
 }; document.getElementById('io27z').onclick = (event) => {
   event.preventDefault();
@@ -41,6 +43,9 @@ window.onload = () => {
   const list = document.getElementById('i03afv');
   // let userId = window.location.pathname.replace('/Profile/','');
   let user = JSON.parse(localStorage.getItem('user'));
+  if(!user){
+    location.href = "/Login"
+  }
   console.log(JSON.parse(localStorage.getItem('user')));
   if(user.usercategory === 'Πελάτης'){
     document.getElementById('ibznrl').style.display = 'none';

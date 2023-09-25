@@ -12,12 +12,14 @@ document.getElementById('i0ydy').onclick = (event) => {
   { location.href = '/editProfile'; }
 }; document.getElementById('iib2w').onclick = (event) => {
   event.preventDefault();
+  localStorage.removeItem('user');
   { location.href = '/Login'; }
 }; document.getElementById('ipavd').onclick = (event) => {
   event.preventDefault();
   { location.href = '/Profile'; }
 }; document.getElementById('iq2sl').onclick = (event) => {
   event.preventDefault();
+  localStorage.removeItem('user');
   { location.href = '/Login'; }
 }; document.getElementById('io27z').onclick = (event) => {
   event.preventDefault();
@@ -70,6 +72,9 @@ window.onload = () => {
 
   // Only show update tab to supplier
   let user = JSON.parse(localStorage.getItem('user'));
+  if(!user){
+    location.href = "/Login"
+  }
   if(user.usercategory === 'Πελάτης'){
     document.getElementById('i2n549').style.display = 'none';
   }

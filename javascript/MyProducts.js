@@ -18,6 +18,7 @@ document.getElementById('i20vk').onclick = (event) => {
 
 document.getElementById('iib2w').onclick = (event) => {
   event.preventDefault();
+  localStorage.removeItem('user');
   { location.href = '/Login'; }
 }; 
 
@@ -27,6 +28,7 @@ document.getElementById('ipavd').onclick = (event) => {
 }; 
 document.getElementById('iq2sl').onclick = (event) => {
   event.preventDefault();
+  localStorage.removeItem('user');
   { location.href = '/Login'; }
 }; 
 
@@ -96,6 +98,9 @@ window.onload = () => {
     list.style.display = 'none';
   // let userId = window.location.pathname.replace("/MyProducts/", "");
   let user = JSON.parse(localStorage.getItem('user'));
+  if(!user){
+    location.href = "/Login"
+    }
   let userId = user._id;
 
   if(user.userimage.data !== undefined){
